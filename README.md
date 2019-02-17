@@ -34,9 +34,14 @@ And here are the threshold limits used to fail the build when it does not meet t
 	http://localhost:8080/connected?origin=Boston				destination parameter is missing
 	http://localhost:8080/connected?destination=Boston			origin parameter is missing
 
-# Complexity of the Algorithm
-
+# Data Structure & Complexity
+	
+	Map<String, Set<String>> is the Collection used to hold all the cities as the key and their connections
+	as the value. The Map is loaded from the input file when the App is booted.
+	
 	Breadth First Traversal is the Algorithm used in this API to determine if the cities are connected. 
+	Queue<String> is used in memory to hold all the cities to be visited, and Set<String> is used to hold 
+	all the cities already visited.
 	The time complexity is O(V + E), when V is number of cities and E is number of connections. 
 
 # Prerequisites to run the app
