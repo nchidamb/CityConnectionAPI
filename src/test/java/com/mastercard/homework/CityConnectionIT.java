@@ -34,20 +34,34 @@ public class CityConnectionIT {
     }
 
     @Test
-    public void isConnected() throws Exception {
+    public void isConnectedScenarios() throws Exception {
         ResponseEntity<String> response = template.getForEntity(base.toString() + "?origin=Boston&destination=Newark",
                 String.class);
         assertThat(response.getBody(), equalTo("Yes"));
         
         response = template.getForEntity(base.toString() + "?origin=Boston&destination=Philadelphia", String.class);
         assertThat(response.getBody(), equalTo("Yes"));
-        
-        response = template.getForEntity(base.toString() + "?origin=Philadelphia&destination=Albany", String.class);
+    }
+    
+    @Test
+    public void isNotConnectedScenarios() throws Exception {
+    	ResponseEntity<String> response = template.getForEntity(base.toString() + "?origin=Philadelphia&destination=Albany", String.class);
         assertThat(response.getBody(), equalTo("No"));
         
         response = template.getForEntity(base.toString() + "?origin=Boston&destination=Dallas", String.class);
         assertThat(response.getBody(), equalTo("No"));
-        
+    }
+    
+    @Test
+    public void isConnectedWithMissingOrigin() throws Exception {
+    	ResponseEntity<String> response = template.getForEntity(base.toString() + "?destination=Dallas", String.class);
+        assertThat(response.getBody(), equalTo("origin parameter is missing")); 
+    }
+    
+    @Test
+    public void isConnectedWithMissingDestination() throws Exception {
+    	ResponseEntity<String> response = template.getForEntity(base.toString() + "?origin=Dallas", String.class);
+        assertThat(response.getBody(), equalTo("destination parameter is missing"));
     }
     
 }

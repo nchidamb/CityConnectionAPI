@@ -14,6 +14,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import com.mastercard.homework.exception.CityConnectionSystemException;
+
 @RunWith(MockitoJUnitRunner.class)
 public class CitiesMapBuilderTest {
 
@@ -29,10 +31,20 @@ public class CitiesMapBuilderTest {
 		verify(citiesConnectionBuilder, times(2)).build(Mockito.anyMap(), Mockito.anyString() , Mockito.anyString());
 	}
 	
+	@Test(expected = CityConnectionSystemException.class)
+	public void buildWithBadInputList() {
+		citiesMapBuilder.build(buildBadInputList());
+	}
+	
 	private List<String> buildInputList() {
 		List<String> list = new ArrayList<String>();
 		list.add("Chicago,NewYork");
 		return list;
 	}
 	
+	private List<String> buildBadInputList() {
+		List<String> list = new ArrayList<String>();
+		list.add("ChicagoNewYork");
+		return list;
+	}
 }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
-@Api(description="City Connections")
+@Api(description="City Connections API")
 public class CityConnectionController {
     
 	private static final String YES = "Yes";
