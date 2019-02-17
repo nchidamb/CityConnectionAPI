@@ -34,6 +34,11 @@ And here are the threshold limits used to fail the build when it does not meet t
 	http://localhost:8080/connected?origin=Boston				destination parameter is missing
 	http://localhost:8080/connected?destination=Boston			origin parameter is missing
 
+# Complexity of the Algorithm
+
+	Breadth First Traversal is the Algorithm used in this API to determine if the cities are connected. 
+	The time complexity is O(V + E), when V is number of cities and E is number of connections. 
+
 # Prerequisites to run the app
 	Java 8
 	Maven 3.x
