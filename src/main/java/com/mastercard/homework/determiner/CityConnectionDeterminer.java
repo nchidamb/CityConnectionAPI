@@ -21,6 +21,7 @@ public class CityConnectionDeterminer {
 	 * @param origin
 	 * @param destination
 	 * @return true if origin is connected with destination, false otherwise
+	 * This is a breadth first search algorithm implementation
 	 */
 	public boolean determineConnectivity(String origin, String destination) {
 		Set<String> citiesVisited = new HashSet<String>();
@@ -34,12 +35,12 @@ public class CityConnectionDeterminer {
 			if(connectedCities.contains(destination)) {
 				return true;
 			}
-			populateCitiesToVisit(citiesVisited, citiesToVisit, connectedCities);
+			populateMoreCitiesToVisit(citiesVisited, citiesToVisit, connectedCities);
 		}
 		return false;
 	}
 
-	private void populateCitiesToVisit(Set<String> citiesVisited, Queue<String> citiesToVisit,
+	private void populateMoreCitiesToVisit(Set<String> citiesVisited, Queue<String> citiesToVisit,
 			Set<String> connectedCities) {
 		for(String connectedCity: connectedCities) {
 			if(!citiesVisited.contains(connectedCity)) {
