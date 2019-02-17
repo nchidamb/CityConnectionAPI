@@ -5,7 +5,8 @@ Here are the content of the project.
 
 	src/main/java - Contains all the Java files of the Spring Boot App
 	src/main/resource - Contains the property files and the input file (cities.txt and application.properties)
-	src/test/java - Contains all the Unit test cases writted in JUnit and Mockito, the Automation test (Spring Boot Test) which has 			some basic happy path test cases
+	src/test/java - Contains all the Unit test cases writted in JUnit and Mockito, the Automation test 
+	                (Spring Boot Test) which has some basic happy path test cases.
 	src/test/resources - Contains all the resources needed for Unit test
 
 And here are the threshold limits used to fail the build when it does not meet the requirement:
