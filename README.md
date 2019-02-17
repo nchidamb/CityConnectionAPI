@@ -1,6 +1,14 @@
 # CityConnectionAPI
 
-Rest API to determine if two given cities are connected. This is a Maven project built using Spring Boot and Java 8.	
+Rest API to determine if two given cities are connected. This is a Maven project built using Spring Boot and Java 8.<br/>
+And here are the threshold limits used to fail the build when it does not meet the requirement:
+
+	Java Code Coverage
+		Class Coverage - 100%
+		Line Coverage - 95%
+		Method Coverage - 95%
+		Branch Coverage - 95%
+	PIT Mutation Coverage - 95%
 
 # Prerequisites to run the app
 	Java 8
