@@ -6,7 +6,7 @@ Here are the content of the project.
 	src/main/java - Contains all the Java files of the Spring Boot App
 	src/main/resource - Contains the property files and the input file (cities.txt and application.properties)
 	src/test/java - Contains all the Unit test cases written using JUnit and Mockito, the Automation test 
-	                (Spring Boot Test) which has some basic happy path test cases.
+	                (Spring Boot Test) which covers happy path scenarios and bad input data scenarios.
 	src/test/resources - Contains all the resources needed for Unit test
 
 And here are the threshold limits used to fail the build when it does not meet the requirement:
@@ -17,6 +17,32 @@ And here are the threshold limits used to fail the build when it does not meet t
 		Method Coverage - 95%
 		Branch Coverage - 95%
 	PIT Mutation Coverage - 95%
+
+# Test Results
+
+	city.txt content is:
+	Boston, New York
+	Philadelphia, Newark
+	Newark, Boston
+	Trenton, Albany
+	
+	Outputs are here:
+	http://localhost:8080/connected?origin=Boston&destination=Newark	Yes
+	http://localhost:8080/connected?origin=Boston&destination=Philadelphia	Yes
+	http://localhost:8080/connected?origin=Philadelphia&destination=Albany	No
+	http://localhost:8080/connected?origin=Boston&destination=Dallas	No
+	http://localhost:8080/connected?origin=Boston				destination parameter is missing
+	http://localhost:8080/connected?destination=Boston			origin parameter is missing
+
+# Data Structure & Complexity
+	
+	Map<String, Set<String>> is the Collection used to hold all the cities as the key and their connections
+	as the value. The Map is loaded from the input file when the App is booted.
+	
+	Breadth First Traversal is the Algorithm used in this API to determine if the cities are connected. 
+	Queue<String> is used in memory to hold all the cities to be visited, and Set<String> is used to hold 
+	all the cities already visited.
+	The time complexity is O(V + E), when V is number of cities and E is number of connections. 
 
 # Prerequisites to run the app
 	Java 8
