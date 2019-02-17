@@ -18,6 +18,22 @@ And here are the threshold limits used to fail the build when it does not meet t
 		Branch Coverage - 95%
 	PIT Mutation Coverage - 95%
 
+# Test Results
+
+	city.txt content is:
+	Boston, New York
+	Philadelphia, Newark
+	Newark, Boston
+	Trenton, Albany
+	
+	Outputs are here:
+	http://localhost:8080/connected?origin=Boston&destination=Newark	Yes
+	http://localhost:8080/connected?origin=Boston&destination=Philadelphia	Yes
+	http://localhost:8080/connected?origin=Philadelphia&destination=Albany	No
+	http://localhost:8080/connected?origin=Boston&destination=Dallas	No
+	http://localhost:8080/connected?origin=Boston				destination parameter is missing
+	http://localhost:8080/connected?destination=Boston			origin parameter is missing
+
 # Prerequisites to run the app
 	Java 8
 	Maven 3.x
@@ -47,20 +63,3 @@ After the project is built using maven, the below reports could be found in your
 
 	Java Code Coverage report - {project-workspace}/target/site/jacoco/index.html
 	PIT Mutation coverage report - {project-workpace}/target/pit-reports/{datetime}/index.html
-
-# Test Results
-
-	city.txt content is:
-	Boston, New York
-	Philadelphia, Newark
-	Newark, Boston
-	Trenton, Albany
-	
-	Outputs are here:
-	http://localhost:8080/connected?origin=Boston&destination=Newark	Yes
-	http://localhost:8080/connected?origin=Boston&destination=Philadelphia	Yes
-	http://localhost:8080/connected?origin=Philadelphia&destination=Albany	No
-	http://localhost:8080/connected?origin=Boston&destination=Dallas	No
-	http://localhost:8080/connected?origin=Boston				destination parameter is missing
-	http://localhost:8080/connected?destination=Boston			origin parameter is missing
-	
